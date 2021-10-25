@@ -99,12 +99,6 @@ public class PokerLabel extends JLabel implements Comparable {
     public int compareTo(Object o) {
 
         PokerLabel pokerLabel = (PokerLabel) o;
-        if (this.num > pokerLabel.num) {
-            return 1;
-        } else if (this.num < pokerLabel.num) {
-            return  -1;
-        } else {
-            return 0;
-        }
+        return Integer.compare(this.num, pokerLabel.num);
     }
 }

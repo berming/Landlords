@@ -10,7 +10,7 @@ public class Player implements Serializable {
     private int id;
     private String name;
     private Socket socket;
-    private List<Poker> pokers = new ArrayList<Poker>();
+    private List<Poker> pokers = new ArrayList<>();
 
     public int getId() {
         return id;

@@ -79,7 +79,7 @@ public class ChuPaiThread extends Thread {
         //出牌
         if(isRun==false && mainFrame.isOut==true)
         {
-            message=new Message(4,mainFrame.currentPlayer.getId(),"出牌",changePokerLableToPoker(mainFrame.selectedPokerLabels));
+            message=new Message(4,mainFrame.currentPlayer.getId(),"出牌", changePokerLabelToPoker(mainFrame.selectedPokerLabels));
 
             //转换为json 交给 sendThread发送到服务器去
             String msg=JSON.toJSONString(message);
@@ -106,7 +106,7 @@ public class ChuPaiThread extends Thread {
         }
     }
 
-    public List<Poker> changePokerLableToPoker(List<PokerLabel> selectedPokerLabels)
+    public List<Poker> changePokerLabelToPoker(List<PokerLabel> selectedPokerLabels)
     {
         List<Poker> list=new ArrayList<Poker>();
         for(int i=0;i<selectedPokerLabels.size();i++)

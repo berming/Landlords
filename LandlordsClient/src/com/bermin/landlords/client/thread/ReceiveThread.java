@@ -163,18 +163,4 @@ public class ReceiveThread extends Thread{
         }
 
     }
-
-
-    /** 接收玩家及扑克牌信息
-     *
-     * @param jsonString
-     */
-    public void jsonToPlayer(String jsonString) {
-
-    }
-
-    // enum MsgType {INIT, GIVEUP, TAKELORD, SKIP, PLAY, END};
-    public void judgeAndPlay(String jsonString) {
-
-    }
 }

@@ -107,9 +107,9 @@ public class MainFrame extends JFrame {
     public void showAllPlayersInfo(List<Player> players) {
 
         // 匹配当前玩家
-        for (int i = 0; i < players.size(); i++) {
-            if (players.get(i).getName().equals(uname)) {
-                currentPlayer = players.get(i);
+        for (Player player : players) {
+            if (player.getName().equals(uname)) {
+                currentPlayer = player;
             }
         }
 
@@ -222,7 +222,7 @@ public class MainFrame extends JFrame {
     }
 
     //显示地主图标
-    public void showLordIcon(int playerid)
+    public void showLordIcon(int playerId)
     {
         //创建地主图标对象
         lordIconLabel=new JLabel();
@@ -231,10 +231,10 @@ public class MainFrame extends JFrame {
 
         //根据玩家id显示到具体的位置
         //如果自己是地主
-        if(playerid==currentPlayer.getId()) {
+        if(playerId==currentPlayer.getId()) {
             lordIconLabel.setLocation(200, 450);
         }
-        else if(playerid+1==currentPlayer.getId() || playerid-2==currentPlayer.getId()) //上家  //  2 0    0 1   1 2
+        else if(playerId+1==currentPlayer.getId() || playerId-2==currentPlayer.getId()) //上家  //  2 0    0 1   1 2
         {
             lordIconLabel.setLocation(200, 100);
         }
@@ -259,7 +259,7 @@ public class MainFrame extends JFrame {
     }
 
     //显示出牌的列表
-    public void showOutPokerList(int playerid,List<Poker> outPokers)
+    public void showOutPokerList(int playerId,List<Poker> outPokers)
     {
         //从窗口上移除之前的出牌的列表
         for(int i=0;i<showOutPokerLabels.size();i++) {

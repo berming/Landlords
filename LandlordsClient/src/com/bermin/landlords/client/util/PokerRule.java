@@ -76,9 +76,6 @@ public class PokerRule {
 
     /**
      * 判断list内扑克是否相同
-     * @param list
-     * @param i
-     * @return
      */
     public static boolean isSame(List<PokerLabel> list,int count){
         for(int j=0;j<count-1;j++){

@@ -18,14 +18,14 @@ import com.alibaba.fastjson.JSON;
 
 public class MainFrame {
 
-    public int playerIndex = 0;  // 玩家序号
-    public int playStep = 0;     // 牌局进展
+    public int playerIndex;  // 玩家序号
+    public int playStep;     // 牌局进展
 
-    public List<Player> players = new ArrayList<Player>();
+    public List<Player> players = new ArrayList<>();
 
-    public List<Poker> allPokers = new ArrayList<Poker>();
+    public List<Poker> allPokers = new ArrayList<>();
 
-    public List<Poker> lordPokers = new ArrayList<Poker>();
+    public List<Poker> lordPokers = new ArrayList<>();
 
     public MainFrame() {
         // 创建扑克列表
@@ -71,7 +71,7 @@ public class MainFrame {
 
                         // 玩家到齐，发牌
                         if (playerIndex == 3) {
-                            fapai();
+                            deal();
                             playStep = 1;
                         }
                     } else if (playStep == 1) {  // 抢地主消息
@@ -102,14 +102,13 @@ public class MainFrame {
     }
 
     /** 群发消息到客户端
-     * @param msg
      */
     public void sendMessageToClient(String msg) {
 
-        for (int i = 0; i < players.size(); i++) {
+        for (Player player : players) {
             DataOutputStream dataOutputStream;
             try {
-                dataOutputStream = new DataOutputStream(players.get(i).getSocket().getOutputStream());
+                dataOutputStream = new DataOutputStream(player.getSocket().getOutputStream());
                 dataOutputStream.writeUTF(msg);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -122,10 +121,10 @@ public class MainFrame {
      */
     public void createPokers() {
         //创建大小王
-        Poker dawang = new Poker(0,"大王",17);
-        Poker xiaowang = new Poker(1,"小王",16);
-        allPokers.add(dawang);
-        allPokers.add(xiaowang);
+        Poker redJoker = new Poker(0,"大王",17);
+        Poker blackJoker = new Poker(1,"小王",16);
+        allPokers.add(redJoker);
+        allPokers.add(blackJoker);
 
         // 创建其它扑克牌
         String[] names=new String[]{"2","A","K","Q","J","10","9","8","7","6","5","4","3"};
@@ -146,7 +145,7 @@ public class MainFrame {
 
     /** 发牌
      */
-    public void fapai() {
+    public void deal() {
         // 将牌分给三个玩家， 最后三张作为地主牌
         for (int i = 0; i < allPokers.size(); i++) {
             if (i >= 51) {
