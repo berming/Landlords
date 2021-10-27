@@ -8,7 +8,7 @@ public class Message implements Serializable {
     private int typeId;
     private int playerId;
     private String content;
-    private List<Poker> pokers = new ArrayList<Poker>();
+    private List<Poker> pokers = new ArrayList<>();
 
     public int getTypeId() {
         return typeId;

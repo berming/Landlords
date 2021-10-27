@@ -108,11 +108,11 @@ public class ChuPaiThread extends Thread {
 
     public List<Poker> changePokerLabelToPoker(List<PokerLabel> selectedPokerLabels)
     {
-        List<Poker> list=new ArrayList<Poker>();
+        List<Poker> list= new ArrayList<>();
         for(int i=0;i<selectedPokerLabels.size();i++)
         {
-            PokerLabel pokerLabel=selectedPokerLabels.get(i);
-            Poker poker=new Poker(pokerLabel.getId(), pokerLabel.getName(), pokerLabel.getNum());
+            PokerLabel pokerLabel = selectedPokerLabels.get(i);
+            Poker poker = new Poker(pokerLabel.getId(), pokerLabel.getName(), pokerLabel.getNum());
             list.add(poker);
         }
 

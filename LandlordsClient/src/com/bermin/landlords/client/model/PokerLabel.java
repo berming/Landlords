@@ -11,6 +11,8 @@ public class PokerLabel extends JLabel implements Comparable {
     private boolean isUp;
     private boolean isSelected;
 
+    public static String pockImagePath = "LandlordsClient/images/poker/";
+
     public int getId() {
         return id;
     }
@@ -88,11 +90,11 @@ public class PokerLabel extends JLabel implements Comparable {
     }
 
     public void turnUp() {
-        this.setIcon(new ImageIcon("images/poker/" + id + ".jpg"));
+        this.setIcon(new ImageIcon(pockImagePath + id + ".jpg"));
     }
 
     public void turnDown() {
-        this.setIcon(new ImageIcon("images/poker/down.jpg"));
+        this.setIcon(new ImageIcon(pockImagePath + "down.jpg"));
     }
 
     @Override

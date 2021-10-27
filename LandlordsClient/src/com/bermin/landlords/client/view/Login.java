@@ -8,17 +8,14 @@ import java.io.IOException;
 import java.net.Socket;
 
 public class Login extends  JFrame{
-    private JLabel unameJLabel;
     private JTextField unameJText;
-    private JButton  loginJButton;
-    private JButton cancelJButton;
 
     public Login() {
 		 //创建组件对象
-        this.unameJLabel = new JLabel("用户名：");
+        JLabel unameJLabel = new JLabel("用户名：");
         this.unameJText = new JTextField();
-        this.loginJButton = new JButton("登录");
-        this.cancelJButton = new JButton("取消");
+        JButton loginJButton = new JButton("登录");
+        JButton cancelJButton = new JButton("取消");
 
 		 //设置窗口属性 
         this.setSize(400, 300);
@@ -35,7 +32,7 @@ public class Login extends  JFrame{
 
 		 //创建监听器对象 绑定到按钮上
         MyEvent myEvent = new MyEvent();
-        this.loginJButton.addActionListener(myEvent);
+        loginJButton.addActionListener(myEvent);
     }
 
     // 事件监听器类

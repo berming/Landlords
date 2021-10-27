@@ -21,6 +21,8 @@ import java.util.List;
 
 public class MainFrame extends JFrame {
 
+    public static String bgImagePath = "LandlordsClient/images/bg/";
+
     public MyPanel myPanel;
     public String uname;
 
@@ -33,7 +35,7 @@ public class MainFrame extends JFrame {
     public Player currentPlayer;  // 当前玩家
     public int prevPlayerId = -1; // 上个出牌的玩家
 
-    public List<PokerLabel> pokerLabels = new ArrayList<PokerLabel>();  // 扑克标签列表
+    public List<PokerLabel> pokerLabels = new ArrayList<>();  // 扑克标签列表
 
     public boolean isLord;     // 是否地主
     public boolean isOut;      // 选择是否出牌
@@ -48,8 +50,8 @@ public class MainFrame extends JFrame {
     public JLabel chuPaiJLabel;  // 出牌标签
     public JLabel buChuJLabel;   // 不出牌
 
-    public List<PokerLabel> selectedPokerLabels = new ArrayList<PokerLabel>();
-    public List<PokerLabel> showOutPokerLabels = new ArrayList<PokerLabel>();
+    public List<PokerLabel> selectedPokerLabels = new ArrayList<>();
+    public List<PokerLabel> showOutPokerLabels = new ArrayList<>();
 
     public MainFrame(String uname, Socket socket) throws HeadlessException {
         this.uname = uname;
@@ -84,14 +86,14 @@ public class MainFrame extends JFrame {
         msgLabel = new JLabel();
         chuPaiJLabel = new JLabel();
         chuPaiJLabel.setBounds(330, 350, 110, 53);
-        chuPaiJLabel.setIcon(new ImageIcon("images/bg/chupai.png"));
+        chuPaiJLabel.setIcon(new ImageIcon(bgImagePath + "chupai.png"));
         chuPaiJLabel.addMouseListener(new MyMouseEvent());
         chuPaiJLabel.setVisible(false);
         this.myPanel.add(chuPaiJLabel);
 
         buChuJLabel = new JLabel();
         buChuJLabel.setBounds(440, 350, 110, 53);
-        buChuJLabel.setIcon(new ImageIcon("images/bg/buchupai.png"));
+        buChuJLabel.setIcon(new ImageIcon(bgImagePath + "buchupai.png"));
         buChuJLabel.addMouseListener(new MyMouseEvent());
         buChuJLabel.setVisible(false);
         this.myPanel.add(buChuJLabel);
@@ -142,13 +144,13 @@ public class MainFrame extends JFrame {
         // 显示抢地主的按钮 和 定时器按钮
         lordLabel1 = new JLabel();
         lordLabel1.setBounds(330, 400, 104, 46);
-        lordLabel1.setIcon(new ImageIcon("images/bg/jiaodizhu.png"));
+        lordLabel1.setIcon(new ImageIcon(bgImagePath + "jiaodizhu.png"));
         lordLabel1.addMouseListener(new MyMouseEvent());
         this.myPanel.add(lordLabel1);
 
         lordLabel2 = new JLabel();
         lordLabel2.setBounds(440, 400, 104, 46);
-        lordLabel2.setIcon(new ImageIcon("images/bg/bujiao.png"));
+        lordLabel2.setIcon(new ImageIcon(bgImagePath + "bujiao.png"));
         lordLabel2.addMouseListener(new MyMouseEvent());
 
         this.myPanel.add(lordLabel2);
@@ -187,9 +189,9 @@ public class MainFrame extends JFrame {
 
         msgLabel.setBounds(500, 300, 129, 77);
         if(typeId==1)
-            msgLabel.setIcon(new ImageIcon("images/bg/buqiang.png"));
+            msgLabel.setIcon(new ImageIcon(bgImagePath + "buqiang.png"));
         if(typeId==3)
-            msgLabel.setIcon(new ImageIcon("images/bg/buchu.png"));
+            msgLabel.setIcon(new ImageIcon(bgImagePath + "buchu.png"));
         this.myPanel.add(msgLabel);
         this.repaint();
     }
@@ -226,7 +228,7 @@ public class MainFrame extends JFrame {
     {
         //创建地主图标对象
         lordIconLabel=new JLabel();
-        lordIconLabel.setIcon(new ImageIcon("images/bg/dizhu.png"));
+        lordIconLabel.setIcon(new ImageIcon(bgImagePath + "dizhu.png"));
         lordIconLabel.setSize(60, 89);
 
         //根据玩家id显示到具体的位置
@@ -342,7 +344,7 @@ public class MainFrame extends JFrame {
                 PokerType pokerType = PokerRule.checkPokerType(selectedPokerLabels);
 
                 // 判断牌型
-                if (!pokerType.equals(PokerType.p_error)) {
+                if (!pokerType.equals(PokerType.TYPE_ERROR)) {
                     System.out.println(prevPlayerId + ", " + currentPlayer.getId());
 
                     if (prevPlayerId == -1 || prevPlayerId == currentPlayer.getId()

@@ -36,7 +36,7 @@ public class ReceiveThread extends Thread{
                     // 接收玩家及扑克牌信息
                     System.out.println(jsonString);
 
-                    List<Player> players = new ArrayList<Player>();
+                    List<Player> players = new ArrayList<>();
                     JSONArray playerJsonArray = JSONArray.parseArray(jsonString);
                     for (int i = 0; i < playerJsonArray.size(); i++) {
 
@@ -48,7 +48,7 @@ public class ReceiveThread extends Thread{
                         String name = playerJson.getString("name");
 
                         // 存放扑克列表
-                        List<Poker> pokers = new ArrayList<Poker>();
+                        List<Poker> pokers = new ArrayList<>();
                         JSONArray pokerJsonArray = playerJson.getJSONArray("pokers");
                         for (int j = 0; j < pokerJsonArray.size(); j++) {
 
@@ -88,7 +88,7 @@ public class ReceiveThread extends Thread{
                     if (typeId == 2) { // 抢地主
                         //获得地主牌
                         JSONArray pokersJsonArray= msgJsonObject.getJSONArray("pokers");
-                        List<Poker> lordPokers = new ArrayList<Poker>();
+                        List<Poker> lordPokers = new ArrayList<>();
 
                         for (int i = 0; i < pokersJsonArray.size(); i++) {
                             JSONObject pokerJsonObject = (JSONObject) pokersJsonArray.get(i);
@@ -126,7 +126,7 @@ public class ReceiveThread extends Thread{
                     if (typeId == 4) { // 出牌
                         //获得出牌列表
                         JSONArray pokersJsonArray= msgJsonObject.getJSONArray("pokers");
-                        List<Poker> outPokers = new ArrayList<Poker>();
+                        List<Poker> outPokers = new ArrayList<>();
 
                         for (int i = 0; i < pokersJsonArray.size(); i++) {
                             JSONObject pokerJsonObject = (JSONObject) pokersJsonArray.get(i);

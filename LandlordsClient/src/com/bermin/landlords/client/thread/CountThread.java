@@ -6,8 +6,8 @@ import com.bermin.landlords.client.view.MainFrame;
 
 public class CountThread extends Thread{
     private int index;
-    private MainFrame mainFrame;
     private boolean isRun;
+    private MainFrame mainFrame;
 
     public boolean isRun() {
         return isRun;
